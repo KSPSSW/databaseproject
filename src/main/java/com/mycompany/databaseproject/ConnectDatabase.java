@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author kissa
  */
-public class DatabaseProject {
+public class ConnectDatabase {
 
     public static void main(String[] args) {
         Connection conn = null;
