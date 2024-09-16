@@ -32,7 +32,7 @@ public class DatabaseHelper {
         return conn;
     }
     
-    public static void close() {
+    public static synchronized void close() {
         if(conn != null){
             try {
                 conn.close();
