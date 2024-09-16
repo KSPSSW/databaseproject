@@ -73,8 +73,28 @@ public class UserDao implements Dao<User>{
 
     @Override
     public User save(User obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        User user = null;
+        String sql = "SELECT * FROM user WHERE user_id=?";
+        Connection conn = DatabaseHelper.getConnect();
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,id);
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("user_id"));
+                user.setName(rs.getString("user_name"));
+                user.setRole(rs.getInt("user_role"));
+                user.setGender(rs.getString("user_gender"));
+                user.setPassword(rs.getString("user_password"));
+                
+               
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());  
+        }
+        return obj;    }
 
     @Override
     public User update(User obj) {
