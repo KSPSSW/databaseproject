@@ -21,21 +21,22 @@ public class TestUserDao {
         User user1 = userDao.get(2);
         System.out.println(user1);
         
+        //save
         /*User newUser = new User("user3", "password", 2, "F");
         User insertedUser = userDao.save(newUser);
         System.out.println(insertedUser);
         insertedUser.setGender("M");*/
         
         
-        /*user1.setGender("F");
-        userDao.update(user1);
-        userDao.updateUser = userDao.get(insertedUser.getId());
-        System.out.println(updateUser);*/
-        
-        userDao.delete(user1);
-        for(User u: userDao.getAll()){
-            System.out.println(u);
-        }
+//        user1.setGender("F");
+//        userDao.update(user1);
+//        User updateUser = userDao.get(user1.getId());
+//        System.out.println(user1);
+//        
+//        userDao.delete(user1);
+//        for(User u: userDao.getAll()){
+//            System.out.println(u);
+//        }
         
         DatabaseHelper.close();
     }

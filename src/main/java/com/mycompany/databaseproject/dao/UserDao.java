@@ -28,7 +28,7 @@ public class UserDao implements Dao<User>{
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1,id);
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 user = new User();
                 user.setId(rs.getInt("user_id"));
@@ -99,7 +99,7 @@ public class UserDao implements Dao<User>{
     @Override
     public User update(User obj) {
         String sql = "UPDATE user"
-                + "   SET user_name = ?,user_gender = ?,user_password = ?,user_role = ?"
+                + " SET user_name = ?,user_gender = ?,user_password = ?,user_role = ?"
                 + " WHERE user_id = ?";
         Connection conn = DatabaseHelper.getConnect();
         try {
