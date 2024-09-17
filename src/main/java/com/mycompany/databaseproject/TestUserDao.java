@@ -37,6 +37,11 @@ public class TestUserDao {
 //        for(User u: userDao.getAll()){
 //            System.out.println(u);
 //        }
+
+
+        for(User u: userDao.getAll("user_name like 'u%","user_name asc, user_gender desc")){
+            System.out.println(u);
+        }
         
         DatabaseHelper.close();
     }
