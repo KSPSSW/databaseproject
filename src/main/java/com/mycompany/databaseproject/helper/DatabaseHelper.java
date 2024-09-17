@@ -6,7 +6,10 @@ package com.mycompany.databaseproject.helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,4 +45,16 @@ public class DatabaseHelper {
             }
         }
     }   
+
+    public static int getInsertedId(Statement stmt) {
+        try {
+            ResultSet key = stmt.getGeneratedKeys();
+            key.next();
+            return key.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+   }   
 }
+

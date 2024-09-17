@@ -4,11 +4,17 @@
  */
 package com.mycompany.databaseproject.model;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author informatics
  */
 public class User {
+
+    public static User fromRS(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private int id;
     private String name;
     private String password;
@@ -25,6 +31,10 @@ public class User {
 
     public User() {
         this.id = -1;
+    }
+
+    public User(String user3, String password, int i, String f) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getId() {
