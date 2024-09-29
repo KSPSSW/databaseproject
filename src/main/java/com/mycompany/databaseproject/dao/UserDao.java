@@ -30,14 +30,7 @@ public class UserDao implements Dao<User>{
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                user = new User();
-                user.setId(rs.getInt("user_id"));
-                user.setName(rs.getString("user_name"));
-                user.setRole(rs.getInt("user_role"));
-                user.setGender(rs.getString("user_gender"));
-                user.setPassword(rs.getString("user_password"));
-                
-               
+                user = User.fromRS(rs);
             }
 
         } catch (SQLException ex) {
@@ -46,7 +39,23 @@ public class UserDao implements Dao<User>{
         return user;
     }
     
-    
+    public User getByName(String name) {
+        User user = null;
+        String sql = "SELECT * FROM user WHERE user_name=?";
+        Connection conn = DatabaseHelper.getConnect();
+        try {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,name);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                user = User.fromRS(rs);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());  
+        }
+        return user;
+    }
 
 
     @Override

@@ -5,6 +5,9 @@
 package com.mycompany.databaseproject.model;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -82,4 +85,15 @@ public class User {
         return "User{" + "id=" + id + ", name=" + name + ", password=" + password + ", role=" + role + ", gender=" + gender + '}';
     }
     
+    public void formRS(ResultSet rs){
+        try {
+            this.setId(rs.getInt("user_id"));
+            this.setName(rs.getString("user_name"));
+            this.setRole(rs.getInt("user_role"));
+            this.setGender(rs.getString("user_gender"));
+            this.setPassword(rs.getString("user_password"));
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
